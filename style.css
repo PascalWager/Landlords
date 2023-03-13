@@ -1,0 +1,443 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100..900&display=swap");
+@font-face {
+  font-family: Sixty;
+  src: url("fonts/sixty/SixtyfourVar.woff2") format("woff2");
+  font-variation-settings: "SCAN" -800 1000, "BLED" 0 500;
+  /* font-variation-settings: "BLED" 0 500; */
+}
+@font-face {
+  font-family: "HealA";
+  src: url("fonts/HealTheWeb/healtheweba-regular-webfont.woff2") format("woff2"),
+    url("fonts/HealTheWeb/healtheweba-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HealB";
+  src: url("fonts/HealTheWeb/healthewebb-regular-webfont.woff2") format("woff2"),
+    url("fonts/HealTheWeb/healthewebb-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NewsReader";
+  src: url("/fonts/news/newsreader.woff2") format("woff2"),
+    url("/fonts/news/newsreader.woff") format("woff");
+  font-style: normal;
+  font-variation-settings: "wght" 200 800, "opsz" 6 72;
+}
+@font-face {
+  font-family: "NewsReader";
+  src: url("/fonts/news/newsreader-italic.woff2") format("woff2"),
+    url("/fonts/news/newsreader-italic.woff") format("woff");
+  font-variation-settings: "wght" 200 800, "opsz" 6 72;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/inter-var.woff2") format("woff2");
+  font-variation-settings: "wght" 100 900, "slnt" -10 0;
+}
+:root {
+  --textsize: 2.5rem;
+  --headersize: 4rem;
+  --linksize: 1.5rem;
+  --footersize: 1.3rem;
+  --qtextsize: 3.5rem;
+  --typesize: 3.5rem;
+  /* typeface */
+  --computersize-1: Sixty;
+  --computersize-2: Inter;
+  --qtext: NewsReader;
+  --maintype: Inter;
+  --headerfont: HealB;
+
+  --backyellow: #feff03;
+  --backgray: rgb(239, 239, 239);
+}
+* {
+  margin: 0px;
+}
+html {
+  font-size: 62.5%;
+  font-family: var(--maintype);
+}
+body {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 100vh !important;
+  width: 800vw;
+  background-color: rgb(239, 239, 239);
+  transition: background-color 1s ease-in;
+  cursor: none;
+}
+/* .headofhead {
+  width: 1000vh;
+} */
+.stuff {
+  position: absolute;
+  z-index: 3;
+}
+.textEtho {
+  font-size: var(--qtextsize);
+  font-family: var(--qtext);
+  font-variation-settings: "wght" 200, "opsz" 72;
+  transition: font-variation-settings 0.5s ease-in-out;
+  font-style: italic;
+  overflow-y: scroll;
+  z-index: 4;
+  padding: 10%;
+}
+.header {
+  background-color: white;
+  font-family: var(--headerfont);
+  font-size: var(--headersize);
+  /* font-style: normal; */
+  transition: font-style 1s ease-in;
+  border-bottom: 1px solid black;
+  padding: 30px 5px 10px 15px;
+  animation: change-temp-back 0.5s ease-in-out forwards;
+  overflow-x: scroll;
+  word-spacing: -10px;
+}
+#bigT {
+  position: fixed;
+}
+#bigT2 {
+  position: absolute;
+}
+/* .windbox {
+  width: 1000vh;
+} */
+.divfooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* background-color: white; */
+  border-top: 0.5px solid black;
+}
+.footer {
+  position: relative;
+  font-size: var(--footersize);
+  padding: 5px;
+  float: right;
+  padding-right: 10px;
+}
+.windowbox {
+  position: relative;
+}
+.articlebox {
+  position: fixed;
+  margin: 20px;
+  margin-top: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  padding-left: 10px;
+  width: max-content;
+  height: max-content;
+  background-color: white;
+  z-index: 10;
+  box-shadow: 40px 33px 100px 4px rgba(0, 0, 0, 0.2);
+}
+.articlediv {
+  margin-bottom: 5px;
+  /* border-bottom: 1px solid black; */
+}
+p.article {
+  text-decoration: none;
+  color: black;
+  font-size: var(--linksize);
+  margin-left: 2px;
+}
+.window {
+  position: absolute;
+  border: 0.5px solid black;
+  z-index: 500;
+  background-color: white;
+  display: inline-block;
+  overflow: auto;
+  transform: -50% -50%;
+  /* resize: both;
+  overflow: auto; */
+}
+.window.open {
+  position: absolute;
+  border: 0.5px solid black;
+  z-index: 500;
+  background-color: white;
+  display: inline-block;
+  overflow: auto;
+  transform: -50% -50%;
+  filter: blur(2px);
+}
+.imagebox {
+  position: absolute;
+  width: 800vw;
+  /* left: 1000px; */
+  margin-top: 5vh;
+  display: flex;
+  justify-content: space-evenly;
+  z-index: 1;
+}
+.imagecontent {
+  transition: all 1s;
+}
+.bar {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  /* //float: inline-start; */
+  align-items: center;
+  justify-content: space-between;
+}
+.close {
+  background: #feff03;
+  border: none;
+  font-weight: 400;
+  margin: 5px;
+  width: 40px;
+  height: 20px;
+}
+.coll {
+  background: black;
+  border-radius: 8px;
+  border: none;
+  float: right;
+  color: white;
+  margin: 5px;
+  width: 50px;
+  height: 20px;
+}
+.titlebox {
+  font-size: 11px;
+  font-weight: 100;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+.windowframe {
+  /* margin: 40px; */
+  display: block;
+  height: 50vh;
+  border: none;
+  width: -webkit-fill-available;
+}
+iframe {
+  padding: 10px;
+  background-color: #feff03;
+}
+.typedc {
+  font-family: var(--maintype);
+  font-size: var(--typesize);
+  border: 0.5px solid black;
+  top: 20px;
+  height: max-content;
+  background-color: #ffffff;
+  padding: 10px 5px 5px 10px;
+  z-index: 3;
+  overflow-y: scroll;
+}
+.boldtext {
+  font-family: var(--qtext);
+  /* font-variation-settings: "wght" 700, "slnt" 0; */
+  font-size: 4rem;
+  font-variation-settings: "wght" 300, "opsz" 72;
+}
+.boldertext {
+  font-family: var(--maintype);
+  font-variation-settings: "wght" 700, "slnt" 0;
+  font-size: var(--typesize);
+}
+#atitle {
+  margin-bottom: 5px;
+  margin-left: 2px;
+  /* display: inline-block; */
+  width: 100%;
+  font-size: 20px;
+  /* border-bottom: 0.5px dotted black; */
+  font-family: var(--headerfont);
+  /* text-decoration: underline; */
+}
+.cursor {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  width: 25px;
+  height: 5px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  mix-blend-mode: difference;
+  /* border-radius: 50%; */
+  pointer-events: none;
+  transition: width 0.5s, height 0.5s;
+  z-index: 10;
+}
+.divbtn {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 30px;
+  margin-left: 20px;
+  z-index: 600;
+}
+.buttons {
+  background: var(--backgray);
+  border-radius: 20px;
+  color: white;
+  margin: 5px;
+  font-family: var(--headerfont);
+  font-size: var(--linksize);
+  padding: 10px 20px 10px 20px;
+}
+#openall {
+  width: max-content !important;
+  background: var(--backyellow);
+  color: black;
+  border: 0.5px dashed black;
+}
+#collall {
+  width: max-content !important;
+  color: black;
+  border: 0.5px solid black;
+}
+#ranall {
+  width: max-content !important;
+  background-color: white;
+  color: black;
+  border: 0.5px dashed black;
+}
+
+/* All the hover 
+----------------------------------------------*/
+.buttons:hover {
+  filter: drop-shadow(1px 4px 15px var(--backyellow));
+  cursor: ne-resize;
+}
+.header:hover {
+  animation: change-temp 0.5s ease-in-out forwards;
+}
+.typedc:hover {
+  z-index: 5;
+}
+p.article:hover {
+  font-style: italic;
+  filter: blur(1.5px);
+  /* color: ; */
+  text-decoration: line-through;
+  text-decoration-color: black;
+  cursor: help;
+}
+.articlebox:hover {
+  cursor: move;
+}
+.close:hover {
+  filter: drop-shadow(1px 4px 5px rgba(0, 0, 0, 0.2));
+}
+.coll:hover {
+  filter: drop-shadow(1px 4px 5px #feff03);
+}
+.window.open:hover {
+  box-shadow: 19px 24px 82px -37px #131194;
+  filter: none;
+  z-index: 501;
+  cursor: move;
+  /* I don't want animation */
+  /* animation: scaleup 0.5s ease-in-out forwards; */
+}
+.window:hover {
+  cursor: move;
+  /* filter: drop-shadow(2px 4px 16px #131194); */
+}
+.articlebox:hover {
+  z-index: 502;
+}
+.titlebox:hover {
+  cursor: alias;
+  box-shadow: 0px 21px 60px 23px #feff03;
+}
+.textEtho:hover {
+  font-variation-settings: "wght" 400, "opsz" 72;
+}
+/* .imagebox:hover {
+  z-index: 4;
+} */
+#imagecontent1:hover {
+  content: url("./images/scan1-1.png");
+}
+#imagecontent2:hover {
+  content: url("./images/scan2-1.png");
+}
+#imagecontent3:hover {
+  content: url("./images/scan3-1.png");
+}
+#imagecontent4:hover {
+  content: url("./images/scan4-1.png");
+}
+#imagecontent5:hover {
+  content: url("./images/scan5-1.png");
+}
+#imagecontent6:hover {
+  content: url("./images/scan6-1.png");
+}
+
+/* All the animations 
+----------------------------------------------*/
+@keyframes change-weight {
+  from {
+    font-weight: 100;
+    letter-spacing: normal;
+    padding-bottom: 10px;
+  }
+  to {
+    font-weight: 900;
+    letter-spacing: 15px;
+    padding-bottom: 50px;
+  }
+}
+@keyframes change-back {
+  from {
+    font-weight: 900;
+    letter-spacing: 15px;
+    padding-bottom: 50px;
+  }
+  to {
+    font-weight: 100;
+    letter-spacing: normal;
+    padding-bottom: 10px;
+  }
+}
+@keyframes scaleup {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+@keyframes change-temp {
+  from {
+    font-variation-settings: "SCAN" -800, "BLED" 0;
+    padding-bottom: 10px;
+    letter-spacing: normal;
+  }
+  to {
+    font-variation-settings: "SCAN" 500, "BLED" 500;
+    padding-bottom: 15px;
+    letter-spacing: 5px;
+    word-spacing: normal;
+  }
+}
+@keyframes change-temp-back {
+  from {
+    font-variation-settings: "SCAN" 500, "BLED" 500;
+    padding-bottom: 15px;
+    letter-spacing: 5px;
+    word-spacing: normal;
+  }
+  to {
+    font-variation-settings: "SCAN" -800, "BLED" 0;
+    padding-bottom: 10px;
+    letter-spacing: normal;
+  }
+}
