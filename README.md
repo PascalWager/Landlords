@@ -1,3 +1,3 @@
 # internet
-index to readings to why:
+Index about how:
   The internet is owned by the capital
