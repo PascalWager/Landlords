@@ -46,6 +46,7 @@ function domorework() {
   document.getElementById("openall").addEventListener("click", opwids);
   document.getElementById("ranall").addEventListener("click", ranall);
   document.getElementById("collall").addEventListener("click", collall);
+  document.getElementById("closeall").addEventListener("click", closeall);
 }
 function opwids() {
   const tempdiv = document.querySelectorAll(".article");
@@ -73,6 +74,12 @@ function collall() {
     collElm(x);
   }
 }
+function closeall() {
+  const tempdiv = document.querySelectorAll(".close");
+  for (temp of tempdiv) {
+    closewin(temp);
+  }
+}
 function generateText(sec) {
   const mydiv = document.querySelector(".stuff");
   bodyText.forEach((value, index) => {
@@ -84,13 +91,14 @@ function generateText(sec) {
     var x = window.innerWidth - window.innerWidth / 4;
     var ranY = Math.random() * y;
     var ranX = Math.random() * (x / 2);
+    if (index == 5) ranY -= 100;
     const cdiv = document.createElement("span");
     cdiv.className = "textEtho";
     cdiv.setAttribute(
       "style",
       `position:absolute; left:${
         sec * (index + 1) + ranX
-      }px; top:${ranY}px; width:${20}vw;`
+      }px; top:${ranY}px; width:${25}vw;`
     );
     cdiv.innerText = `"${value}"`;
     mydiv.appendChild(cdiv);
@@ -120,7 +128,7 @@ function generateText(sec) {
       "style",
       `position:absolute;
     left:${leftdiv}px;
-    top:${topdiv}px; width:${25}vw; height:${
+    top:${topdiv}px; width:${30}vw; height:${
         cdiv.offsetHeight
       }px; background-color:#ffffff; z-index:0; transform: skew(${
         Math.random() * 7
