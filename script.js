@@ -207,10 +207,10 @@ function generateWindow(link) {
   $(".window").draggable({});
   $(".window").resizable({});
 }
-// function closewin(elem) {
-//   // elem.Parentnode.remove();
-//   elem.parentNode.parentNode.remove();
-// }
+function closewin(elem) {
+  // elem.Parentnode.remove();
+  elem.parentNode.parentNode.remove();
+}
 function collwin(elem) {
   // elem.Parentnode.remove();
   checkElm(elem);
