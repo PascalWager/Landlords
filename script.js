@@ -171,21 +171,29 @@ function generateWindow(link) {
   maindiv.className = "window";
   maindiv.setAttribute(
     "style",
-    `left:${ranX + whereX}px; top:${ranY}px; width:${ranW}px`
+    `left:${ranX + whereX}px; top:${ranY}px; width:${ranW}px; height: 60vh;`
   );
   maindiv.classList.add("open");
   const bardiv = document.createElement("div");
   bardiv.className = "bar";
   const closebtn = document.createElement("button");
+  const plus = document.createElement("button");
+  const minus = document.createElement("button");
   const colbtn = document.createElement("button");
   const spantext = document.createElement("a");
   const framebox = document.createElement("iframe");
+  framebox.style.width = "100%";
+  framebox.style.height = "100%";
   closebtn.className = "close";
   closebtn.innerText = "X";
   closebtn.setAttribute("onclick", "closewin(this)");
   colbtn.className = "coll";
   colbtn.innerText = "▽";
   colbtn.setAttribute("onclick", "collwin(this)");
+  plus.setAttribute("onclick", "plus(this)");
+  plus.innerText = "+";
+  minus.setAttribute("onclick", "minus(this)");
+  minus.innerText = "-";
   spantext.className = "titlebox";
   spantext.setAttribute("href", `${link.getAttribute("linkname")}`);
   spantext.setAttribute("text", `${link.innerText}`);
@@ -197,6 +205,8 @@ function generateWindow(link) {
   bardiv.appendChild(closebtn);
   bardiv.appendChild(spantext);
   bardiv.appendChild(colbtn);
+  bardiv.appendChild(plus);
+  bardiv.appendChild(minus);
   maindiv.appendChild(bardiv);
   maindiv.appendChild(framebox);
 
@@ -218,6 +228,16 @@ function collElm(element) {
   const temp = element.parentNode.querySelector(".titlebox");
   temp.innerText = temp.getAttribute("text");
   element.innerText = "▲";
+}
+function plus(element) {
+  let baap = element.parentNode.parentNode;
+  baap.style.width = parseInt(baap.style.width) + 30 + "px";
+  baap.style.height = parseInt(baap.style.height) + 1 + "vh";
+}
+function minus(element) {
+  let baap = element.parentNode.parentNode;
+  baap.style.width = parseInt(baap.style.width) - 30 + "px";
+  baap.style.height = parseInt(baap.style.height) - 1 + "vh";
 }
 function checkElm(element) {
   if (!element.parentNode.parentNode.classList.toggle("open")) {
