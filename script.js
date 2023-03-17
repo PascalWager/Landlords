@@ -178,6 +178,7 @@ function generateWindow(link) {
   bardiv.className = "bar";
   const frdiv = document.createElement("div");
   frdiv.className = "windowframe";
+  maindiv.setAttribute("heightis", "");
   const closebtn = document.createElement("button");
   const colbtn = document.createElement("button");
   const spantext = document.createElement("a");
@@ -204,6 +205,7 @@ function generateWindow(link) {
   maindiv.appendChild(frdiv);
 
   mydiv.appendChild(maindiv);
+  maindiv.setAttribute("heightis", maindiv.offsetHeight);
   $(".window").draggable({});
   $(".window").resizable({});
 }
@@ -227,18 +229,26 @@ function collElm(element) {
 }
 function checkElm(element) {
   if (!element.parentNode.parentNode.classList.toggle("open")) {
+    element.parentNode.parentNode.setAttribute(
+      "heightis",
+      element.parentNode.parentNode.offsetHeight
+    );
     element.parentNode.parentNode.querySelector(".windowframe").style.display =
       "none";
     $(element.parentNode.parentNode).resizable("destroy");
     const temp = element.parentNode.querySelector(".titlebox");
     temp.innerText = temp.getAttribute("text");
     element.innerText = "▲";
+
+    element.parentNode.parentNode.style.height = "max-content";
     //element.parentNode.parentNode.style.filter = "none";
   } else {
     element.parentNode.parentNode.classList.add("open");
     element.parentNode.parentNode.querySelector(".windowframe").style.display =
       "block";
     $(element.parentNode.parentNode).resizable();
+    element.parentNode.parentNode.style.height =
+      element.parentNode.parentNode.getAttribute("heightis") + "px";
     const temp = element.parentNode.querySelector(".titlebox");
     temp.innerText = "";
     element.innerText = "▽";
