@@ -71,7 +71,7 @@ function ranall() {
 function collall() {
   const tempdiv = document.querySelectorAll(".coll");
   for (x of tempdiv) {
-    collElm(x);
+    checkElm(x);
   }
 }
 function closeall() {
@@ -176,6 +176,8 @@ function generateWindow(link) {
   maindiv.classList.add("open");
   const bardiv = document.createElement("div");
   bardiv.className = "bar";
+  const frdiv = document.createElement("div");
+  frdiv.className = "windowframe";
   const closebtn = document.createElement("button");
   const colbtn = document.createElement("button");
   const spantext = document.createElement("a");
@@ -191,22 +193,24 @@ function generateWindow(link) {
   spantext.setAttribute("text", `${link.innerText}`);
   spantext.setAttribute("target", "_blank");
   // console.log(`${link}`);
-  framebox.className = "windowframe";
+  // framebox.className = "windowframe";
   framebox.style.display = "block";
   framebox.src = `${link.getAttribute("linkname")}`;
   bardiv.appendChild(closebtn);
   bardiv.appendChild(spantext);
   bardiv.appendChild(colbtn);
   maindiv.appendChild(bardiv);
-  maindiv.appendChild(framebox);
+  frdiv.appendChild(framebox);
+  maindiv.appendChild(frdiv);
 
   mydiv.appendChild(maindiv);
   $(".window").draggable({});
+  $(".window").resizable({});
 }
-function closewin(elem) {
-  // elem.Parentnode.remove();
-  elem.parentNode.parentNode.remove();
-}
+// function closewin(elem) {
+//   // elem.Parentnode.remove();
+//   elem.parentNode.parentNode.remove();
+// }
 function collwin(elem) {
   // elem.Parentnode.remove();
   checkElm(elem);
@@ -214,21 +218,27 @@ function collwin(elem) {
 }
 function collElm(element) {
   element.parentNode.parentNode.classList.toggle("open");
-  element.parentNode.parentNode.lastChild.style.display = "none";
+  element.parentNode.parentNode.querySelector(".windowframe").style.display =
+    "none";
+  $(element.parentNode.parentNode).resizable("destroy");
   const temp = element.parentNode.querySelector(".titlebox");
   temp.innerText = temp.getAttribute("text");
   element.innerText = "▲";
 }
 function checkElm(element) {
   if (!element.parentNode.parentNode.classList.toggle("open")) {
-    element.parentNode.parentNode.lastChild.style.display = "none";
+    element.parentNode.parentNode.querySelector(".windowframe").style.display =
+      "none";
+    $(element.parentNode.parentNode).resizable("destroy");
     const temp = element.parentNode.querySelector(".titlebox");
     temp.innerText = temp.getAttribute("text");
     element.innerText = "▲";
     //element.parentNode.parentNode.style.filter = "none";
   } else {
     element.parentNode.parentNode.classList.add("open");
-    element.parentNode.parentNode.lastChild.style.display = "block";
+    element.parentNode.parentNode.querySelector(".windowframe").style.display =
+      "block";
+    $(element.parentNode.parentNode).resizable();
     const temp = element.parentNode.querySelector(".titlebox");
     temp.innerText = "";
     element.innerText = "▽";

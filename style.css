@@ -154,7 +154,7 @@ p.article {
 .window {
   position: absolute;
   border: 0.5px solid black;
-  z-index: 500;
+  z-index: 20;
   background-color: white;
   display: inline-block;
   overflow: auto;
@@ -165,12 +165,13 @@ p.article {
 .window.open {
   position: absolute;
   border: 0.5px solid black;
-  z-index: 500;
+  z-index: 20;
   background-color: white;
   display: inline-block;
   overflow: auto;
   transform: -50% -50%;
   filter: blur(2px);
+  height: 50vh;
 }
 .imagebox {
   position: absolute;
@@ -222,12 +223,23 @@ p.article {
   display: block;
   height: 50vh;
   border: none;
-  width: -webkit-fill-available;
+  margin-bottom: 5px;
+  height: -webkit-fill-available;
 }
 iframe {
+  border: none;
   padding: 10px;
   background-color: #feff03;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
 }
+.ui-resizable-s {
+  background-color: #feff03;
+  height: 30px;
+}
+/* .ui-resizable-se {
+  cursor: crosshair;
+} */
 .typedc {
   font-family: var(--maintype);
   font-size: var(--typesize);
@@ -260,7 +272,7 @@ iframe {
   font-family: var(--headerfont);
   /* text-decoration: underline; */
 }
-.cursor {
+.cursor.opencr {
   position: fixed;
   left: 10px;
   top: 10px;
@@ -274,13 +286,16 @@ iframe {
   transition: width 0.5s, height 0.5s;
   z-index: 10;
 }
+.cursor.closecr {
+  display: none;
+}
 .divbtn {
   display: flex;
   flex-direction: row;
   position: fixed;
   bottom: 30px;
   margin-left: 20px;
-  z-index: 600;
+  z-index: 60;
 }
 .buttons {
   background: var(--backgray);
@@ -347,7 +362,7 @@ p.article:hover {
 .window.open:hover {
   box-shadow: 19px 24px 82px -37px #131194;
   filter: none;
-  z-index: 501;
+  z-index: 40;
   cursor: move;
   /* I don't want animation */
   /* animation: scaleup 0.5s ease-in-out forwards; */
@@ -357,7 +372,7 @@ p.article:hover {
   /* filter: drop-shadow(2px 4px 16px #131194); */
 }
 .articlebox:hover {
-  z-index: 502;
+  z-index: 60;
 }
 .titlebox:hover {
   cursor: alias;
